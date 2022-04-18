@@ -1,0 +1,72 @@
+img {
+  position: absolute;
+  border-radius: 100%;
+  background-color: #fff;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.45);
+  width: 50px;
+  height: 50px;
+}
+
+img:hover {
+  z-index: 1;
+}
+
+button {
+  position: absolute;
+  background-color: #4CAF50; /* Green */
+  border: none;
+  border-radius: 5px;
+  color: white;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100px;
+  height: 30px;
+  transition-duration: 0.3s;
+}
+
+button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.pos1 {
+  top: 10px;
+}
+
+.pos2 {
+  top: 70px;
+}
+
+.pos3 {
+  top: 130px;
+}
+
+.pos4 {
+  top: 190px;
+}
+
+.pos5 {
+  top: 250px;
+}
+
+.pos6 {
+  top: 310px;
+}
+
+.pos7 {
+  top: 370px;
+}
+
+.pos8 {
+  top: 430px;
+}
+
+.pos9 {
+  left: 920px;
+  top: 20px;
+}
+
+.pos10 {
+  left: 920px;
+  top: 70px;
+}

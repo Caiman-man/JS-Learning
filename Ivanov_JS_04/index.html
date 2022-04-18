@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Ivanov_CRUD</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="js/script.js"></script>
+</head>
+
+<body>
+    <div class="table-title">
+        <div>
+            <h2>Ivanov CRUD Table</h2>
+        </div>
+        <div>
+            <a href="#addEmployeeModal" class="btn btn-add" onclick="ShowAddModal()" style="width:auto;"><i
+                    class="fa fa-plus"></i><span>Add New Employee</span></a>
+            <a href="#deleteEmployeeModal" class="btn btn-del" onclick="ShowDeleteModal()"><i
+                    class="fa fa-remove"></i><span>Delete</span></a>
+        </div>
+    </div>
+
+    <div class="table-wrapper">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        <span class="custom-checkbox">
+                            <input type="checkbox" id="selectAll" onclick="SelectAll()">
+                            <label for="selectAll"></label>
+                        </span>
+                    </th>
+                    <th>Photo</th>
+                    <th style="width: 150px;">Name</th>
+                    <th style="width: 110px;">Phone</th>
+                    <th style="width: 300px;">Address</th>
+                    <th style="width: 70px;">Salary</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody id="tableBody">
+                <tr>
+                    <td>
+                        <span class="custom-checkbox">
+                            <input type="checkbox" name="options[]" value="1">
+                            <label for="checkbox1"></label>
+                        </span>
+                    </td>
+                    <td><img id="photo0" name="photo" src="./Images/nolan.png" alt="Nolan Greyson"
+                            onclick="ShowPhotoModal('photo0')" class="photo">
+                    </td>
+                    <td>Nolan Greyson</td>
+                    <td>(171) 555-2222</td>
+                    <td>89 Chiaroscuro Rd, Portland, USA</td>
+                    <td>100 000р</td>
+                    <td>
+                        <a href="#editEmployeeModal" class="edit" onclick="ShowEditModal()">
+                            <i class="material-icons" title="Edit">&#xE254;</i>
+                        </a>
+                        <a class="delete" onclick="ShowDeleteModal()">
+                            <i class="material-icons" title="Delete">&#xE872;</i>
+                        </a>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <span class="custom-checkbox">
+                            <input type="checkbox" name="options[]" value="1">
+                            <label for="checkbox2"></label>
+                        </span>
+                    </td>
+                    <td><img id="photo1" name="photo" src="./Images/mark.png" alt="Mark Greyson"
+                            onclick="ShowPhotoModal('photo1')" class="photo"></td>
+                    <td>Mark Greyson</td>
+                    <td>(313) 555-5735</td>
+                    <td>Obere Str. 57, Berlin, Germany</td>
+                    <td>70 000р</td>
+                    <td>
+                        <a href="#editEmployeeModal" class="edit" onclick="ShowEditModal()">
+                            <i class="material-icons" title="Edit">&#xE254;</i>
+                        </a>
+                        <a class="delete" onclick="ShowDeleteModal()">
+                            <i class="material-icons" title="Delete">&#xE872;</i>
+                        </a>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <span class="custom-checkbox">
+                            <input type="checkbox" name="options[]" value="1">
+                            <label for="checkbox3"></label>
+                        </span>
+                    </td>
+                    <td><img id="photo2" name="photo" src="./Images/debbie.png" alt="Debbie Grayson"
+                            onclick="ShowPhotoModal('photo2')" class="photo"></td>
+                    <td>Debbie Grayson</td>
+                    <td>(503) 555-9931</td>
+                    <td>25, rue Lauriston, Paris, France</td>
+                    <td>30 000р</td>
+                    <td>
+                        <a href="#editEmployeeModal" class="edit" onclick="ShowEditModal()">
+                            <i class="material-icons" title="Edit">&#xE254;</i>
+                        </a>
+                        <a class="delete" onclick="ShowDeleteModal()">
+                            <i class="material-icons" title="Delete">&#xE872;</i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Add Modal -->
+    <div id="addEmployeeModal" class="modal" onkeypress="onKeyPress()">
+        <form class="modal-content animate">
+            <div class="close-imgcontainer">
+                <span onclick="CloseModal()" class="close" title="Close Modal">&times;</span>
+                <img id="addPhoto" onclick="ChosePhoto()" src="./Images/avatar.png" alt="Avatar" class="avatar">
+            </div>
+
+            <div class="container">
+                <label><b>Name</b></label>
+                <input id="addName" type="text" placeholder="Enter Username" required>
+                <label><b>Phone</b></label>
+                <input id="addPhone" type="text" placeholder="Enter Phone" required>
+                <label><b>Address</b></label>
+                <input id="addAdress" type="text" placeholder="Enter Address" required>
+                <label><b>Salary</b></label>
+                <input id="addSalary" type="text" placeholder="Enter Salary" required>
+            </div>
+
+            <div class="container" style="display: flex; justify-content: end">
+                <button type="button" onclick="CloseModal()" class="cancel-button">Cancel</button>
+                <button type="submit" onclick="AddEmployee()" class="add-button">Add</button>
+            </div>
+
+        </form>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="editEmployeeModal" class="modal" onkeypress="onKeyPress()">
+        <form class="modal-content animate">
+            <div class="close-imgcontainer">
+                <span onclick="CloseModal()" class="close" title="Close Modal">&times;</span>
+                <img id="editPhoto" onclick="ChosePhoto()" src="./Images/avatar.png" alt="Avatar" class="avatar">
+            </div>
+
+            <div id="editModal" class="container">
+                <label><b>Name</b></label>
+                <input id="editName" type="text" placeholder="Enter Username" required>
+                <label><b>Phone</b></label>
+                <input id="editPhone" type="text" placeholder="Enter Phone" required>
+                <label><b>Address</b></label>
+                <input id="editAddress" type="text" placeholder="Enter Address" required>
+                <label><b>Salary</b></label>
+                <input id="editSalary" type="text" placeholder="Enter Salary" required>
+            </div>
+
+            <div class="container" style="display: flex; justify-content: end">
+                <button type="button" onclick="CloseModal()" class="cancel-button">Cancel</button>
+                <button type="submit" onclick="SaveEmployee(), CloseModal()" class="add-button">Save</button>
+            </div>
+        </form>
+    </div>
+
+
+    <!-- Delete Modal -->
+    <div id="deleteEmployeeModal" class="modal" onkeypress="onKeyPress()">
+        <form class="modal-content animate">
+            <div class="container" style="margin-left: 15px;">
+                <h2>Delete Employee</h2>
+                <label>Are you sure you want to delete these Records?</label>
+            </div>
+            <div class="container" style="display: flex; justify-content: end">
+                <button type="button" onclick="CloseModal()" class="cancel-button">Cancel</button>
+                <button type="submit" onclick="DeleteEmployee(), CloseModal()" class="add-button">Delete</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Photo Modal -->
+    <div id="photoModal" class="photomodal" onkeypress="onKeyPress()">
+        <span class="cls" onclick="ClosePhotoModal()">&times;</span>
+        <img class="photomodal-content" id="imgmodal">
+        <div id="caption"></div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<html>
+
+<head>
+    <title>Ivanov_menu</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js"></script>
+</head>
+
+<body>
+    <div class="buttons">
+        <button class="button" onclick="menu.AddItem()">Add</button>
+        <button class="button" onclick="menu.RemoveItem()">Remove</button>
+        <button class="button" onclick="menu.Show()">Show</button>
+        <button class="button" onclick="menu.Hide()">Hide</button>
+    </div>
+
+    <div class="inputs">
+        <input type="text" id="name" name="name" value="" placeholder="Enter name" />
+        <input type="text" id="index" name="index" value="" placeholder="Enter menu index" />
+    </div>
+
+    <div class="dropdown-menu" id="menu">
+        <button class="dropbutton">Menu</button>
+        <div class="dropdown-content" id="content">
+            <a href="#" onclick="test('Nolan Greyson')">Nolan Greyson</a>
+            <a href="#" onclick="test('Mark Greyson')">Mark Greyson</a>
+            <a href="#" onclick="test('Debbie Greyson')">Debbie Greyson</a>
+        </div>
+    </div>
+</body>
+
+</html>
