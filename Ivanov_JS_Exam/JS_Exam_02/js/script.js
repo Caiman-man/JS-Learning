@@ -4,6 +4,7 @@ let numberOfCurrentQuestion = document.getElementById("currentQuestion");
 let numberOfAllQuestions = document.getElementById('numberOfQuestions');
 let optionLabels = document.querySelectorAll(".option-label");
 let optionSpans = document.querySelectorAll(".option-span");
+let scoreElement = document.getElementById('score');
 
 //счетчики
 var currentIndex = 0;  //индекс текущего вопроса
@@ -29,26 +30,30 @@ class Test {
         return this.questions
     }
 
+    //запустить тест
     StartTest() {
+        //предаварительно скрыть модальное окно
+        if (document.getElementById('endTestModal').style.display != 'none')
+            document.getElementById('endTestModal').style.display = 'none'
+
+        //если тест окончен то показать модальное окно
         if (currentIndex == this.questions.length) {
-            alert("Youre score is: " + score);
+            scoreElement.innerHTML = score;
+            document.getElementById('endTestModal').style.display = 'block'
             currentIndex = 0;
             score = 0;
-            //очистить экран и предложить игру снова
         }
 
-        //
-        numberOfCurrentQuestion.innerHTML = currentIndex + 1;
-        numberOfAllQuestions.innerHTML = this.questions.length;
-        question.innerHTML = this.questions[currentIndex].questionText;
-
-        //
+        //предварительно скрываем варианты ответов
         for (let i = 0; i < 4; i++) {
             optionLabels[i].style.display = "none";
             optionSpans[i].style.display = "none";
         }
 
-        //
+        //поместить номер вопроса, кол-во вопросов, вопрос, и варианты ответов в html
+        numberOfCurrentQuestion.innerHTML = currentIndex + 1;
+        numberOfAllQuestions.innerHTML = this.questions.length;
+        question.innerHTML = this.questions[currentIndex].questionText;
         for (let i = 0; i < this.questions[currentIndex].answers.length; i++) {
             optionLabels[i].style.display = "";
             optionSpans[i].style.display = "";
@@ -56,6 +61,7 @@ class Test {
         }
     }
 
+    //проверить вопрос
     CheckAnswer() {
         var radioValue;
         if (document.getElementById('r0').checked) {
@@ -71,7 +77,6 @@ class Test {
             radioValue = 3;
         }
 
-        // console.log(radioValue);
         if (this.questions[currentIndex].rightAnswer == radioValue)
             score++;
         console.log(score);
@@ -145,12 +150,17 @@ itTest.Add(itQ8);
 itTest.Add(itQ9);
 itTest.Add(itQ10);
 
-//
+//автоматический запуск теста
+dotaTest.StartTest();
+
+//кнопка "Ответить"
 function AnswerClick() {
     dotaTest.CheckAnswer();
     currentIndex++;
     dotaTest.StartTest();
 }
 
-//
-dotaTest.StartTest();
+//запуск теста
+function StartTest() {
+    dotaTest.StartTest();
+}
