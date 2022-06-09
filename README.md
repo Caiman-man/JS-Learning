@@ -8,3 +8,4 @@
 - [Часть 03 - Создание элементов](https://github.com/Caiman-man/JS-Learning/tree/main/Ivanov_JS_03)
 - [Часть 04 - CRUD](https://github.com/Caiman-man/JS-Learning/tree/main/Ivanov_JS_04)
 - [Часть 05 - Выпадающий список](https://github.com/Caiman-man/JS-Learning/tree/main/Ivanov_JS_05)
+- [Часть 06 - Quiz](https://github.com/Caiman-man/JS-Learning/tree/main/Ivanov_JS_Exam)
